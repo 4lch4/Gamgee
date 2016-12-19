@@ -7,6 +7,10 @@ In order to use this module, your machine requires PowerShell and the standard s
 
 If you clone or download the repo, it needs to be placed in **C:\Users\<User>\Documents\WindowsPowerShell\Modules\DWL.Helper\**, then you should be able to open a new PowerShell console and run ``Get-Command -Module DWL.Helper`` and it list the available commands in the module.
 
+_Note: In order to use the NodeJS functions, they all use the standard ssh.exe available when you install [git](https://git-scm.com/downloads) in **C:\Program Files\Git\usr\bin**. 
+If you haven't installed [git](https://git-scm.com/downloads) then at least ensure ssh.exe is added to your system or user PATH._
+
+
 ## TODO
 - Add comment-based help to each function call.
 
@@ -29,7 +33,3 @@ The functions are used to:
 - Get the back images available for each Morty in the game.
 - Get the sprites of each Morty in the game.
 - Perform all of the above actions in sequence.
-
-## Notes
-In order to use the NodeJS functions, they all use the standard ssh.exe available when you install [git](https://git-scm.com/downloads) in **C:\Program Files\Git\usr\bin**.
-If you haven't installed [git](https://git-scm.com/downloads) then at least ensure ssh.exe is added to your system or user PATH.

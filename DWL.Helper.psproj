@@ -1,0 +1,14 @@
+﻿<Project>
+  <Version>2.0</Version>
+  <FileID>166a5d07-e161-4920-945a-d9feec6c072f</FileID>
+  <ProjectType>1</ProjectType>
+  <Folders />
+  <Files>
+    <File Build="2">DWL.Helper.psd1</File>
+    <File Build="0">DWL.Helper.psm1</File>
+    <File Build="2" Shared="False" ReferenceFunction="Invoke-Tron-Commands_ps1">Tron-Commands.ps1</File>
+    <File Build="2" Shared="False" ReferenceFunction="Invoke-Get-MortyPictures_ps1">Get-MortyPictures.ps1</File>
+    <File Build="0" ReferenceFunction="Show-Tron_Control_Panel_psf">Tron Control Panel.psf</File>
+  </Files>
+  <StartupScript>C:\Users\DevinL\Google Drive\Development\PowerShell\Projects\DWL.Helper\Test-Module.ps1</StartupScript>
+</Project>

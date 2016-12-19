@@ -7,6 +7,9 @@ In order to use this module, your machine requires PowerShell and the standard s
 
 If you clone or download the repo, it needs to be placed in **C:\Users\<User>\Documents\WindowsPowerShell\Modules\DWL.Helper\**, then you should be able to open a new PowerShell console and run ``Get-Command -Module DWL.Helper`` and it list the available commands in the module.
 
+## TODO
+- Add comment-based help to each function call.
+
 ## Uses
 ### NodeJS Projects
 There are various functions in the TronCommands.ps1 file that help with managing the public Tron bot and a few privately hosted ones.

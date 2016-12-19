@@ -13,7 +13,7 @@ function Upload-Tron {
 	param
 	(
 		[Parameter(Position = 0)]
-		[ValidateSet('Alcha', 'Bella', 'Foo', 'Kayla', 'Raylo', 'Prim', 'Utah', 'Ronnie', 'All')]
+		[ValidateSet('Alcha', 'Bella', 'Foo', 'Kayla', 'Raylo', 'Prim', 'Utah', 'Ronnie', 'Beta', 'All')]
 		[String]
 		$Flavor,
 		
@@ -41,7 +41,7 @@ function Upload-Tron {
 	
 	switch ($Flavor) {
 		'Alcha' {
-			$Files = 'D:\Development\NodeJS\Projects\Tron\Side_Bots\TronA.js'
+			$Files = 'D:\Development\NodeJS\Projects\Tron\Side_Bots\TronI.js'
 			break;
 		}
 		
@@ -75,8 +75,12 @@ function Upload-Tron {
 			$Files = 'D:\Development\NodeJS\Projects\Tron\Side_Bots\TronH.js'
 		}
 		
+		'Beta' {
+			$Files = 'D:\Development\NodeJS\Projects\Tron\Side_Bots\TronA.js'
+		}
+		
 		'All' {
-			$Files = 'D:\Development\NodeJS\Projects\Tron\Side_Bots\TronA.js', `
+			$Files = 'D:\Development\NodeJS\Projects\Tron\Side_Bots\TronI.js', `
 			'D:\Development\NodeJS\Projects\Tron\Side_Bots\TronB.js', `
 			'D:\Development\NodeJS\Projects\Tron\Side_Bots\TronC.js', `
 			'D:\Development\NodeJS\Projects\Tron\Side_Bots\TronD.js', `
@@ -115,9 +119,8 @@ function Start-Tron {
 	param
 	(
 		[Parameter(Position = 0)]
-		[Alias('Flavor')]
 		[String]
-		$TronFlavor,
+		$Flavor,
 		
 		[Parameter(Mandatory = $true,
 				   Position = 1)]
@@ -125,9 +128,9 @@ function Start-Tron {
 		$ServerIP
 	)
 	
-	switch ($TronFlavor) {
+	switch ($Flavor) {
 		'Alcha' {
-			&ssh -t "alcha@$ServerIP" "sudo service TronA start"
+			&ssh -t "alcha@$ServerIP" "sudo service TronI start"
 		}
 		
 		'Bella' {
@@ -156,6 +159,9 @@ function Start-Tron {
 		
 		'Utah' {
 			&ssh -t "alcha@$ServerIP" "sudo service TronH start"
+		
+		'Beta' {
+			&ssh -t "alcha@$ServerIP" "sudo service TronA start"
 		}
 		
 		default {
@@ -169,14 +175,18 @@ function Stop-Tron {
 	(
 		[Parameter(Mandatory = $false,
 				   Position = 0)]
-		[Alias('Flavor')]
 		[String]
-		$TronFlavor
+		$Flavor,
+		
+		[Parameter(Mandatory = $true,
+				   Position = 1)]
+		[String]
+		$ServerIP
 	)
 	
-	switch ($TronFlavor) {
+	switch ($Flavor) {
 		'Alcha' {
-			&ssh -t "alcha@$ServerIP" "sudo service TronA stop"
+			&ssh -t "alcha@$ServerIP" "sudo service TronI stop"
 		}
 		
 		'Bella' {
@@ -207,10 +217,8 @@ function Stop-Tron {
 			&ssh -t "alcha@$ServerIP" "sudo service TronH stop"
 		}
 		
-		'All' {
+		'Beta' {
 			&ssh -t "alcha@$ServerIP" "sudo service TronA stop"
-			&ssh -t "alcha@$ServerIP" "sudo service TronB stop"
-			&ssh -t "alcha@$ServerIP" "sudo service TronC stop"
 		}
 	}
 }
@@ -220,14 +228,18 @@ function Restart-Tron {
 	(
 		[Parameter(Mandatory = $false,
 				   Position = 0)]
-		[Alias('Flavor')]
 		[String]
-		$TronFlavor
+		$Flavor,
+		
+		[Parameter(Mandatory = $true,
+				   Position = 1)]
+		[String]
+		$ServerIP
 	)
 	
-	switch ($TronFlavor) {
+	switch ($Flavor) {
 		'Alcha' {
-			&ssh -t "alcha@$ServerIP" "sudo service TronA restart"
+			&ssh -t "alcha@$ServerIP" "sudo service TronI restart"
 		}
 		
 		'Bella' {
@@ -256,6 +268,9 @@ function Restart-Tron {
 		
 		'Utah' {
 			&ssh -t "alcha@$ServerIP" "sudo service TronH restart"
+		
+		'Beta' {
+			&ssh -t "alcha@$ServerIP" "sudo service TronA restart"
 		}
 		
 		default {

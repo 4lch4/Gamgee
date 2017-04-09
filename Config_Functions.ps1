@@ -8,7 +8,7 @@
 	 Filename:     	Config_Functions.ps1
 	===========================================================================
 	.DESCRIPTION
-		A description of the file.
+		Contains the functions responsible for maintaining configuration info.
 #>
 
 function Get-Config {

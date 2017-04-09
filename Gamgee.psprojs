@@ -8,9 +8,6 @@
     <File>Gamgee.psm1</File>
     <File>Get-MortyPictures.ps1</File>
     <File>Gamgee.psd1</File>
-    <File>Hermes\Server_Connections.ps1</File>
-    <File>Config_Functions.ps1</File>
-    <File>SAPIEN_Commands.ps1</File>
     <File>Tron-Commands.ps1</File>
     <File>TronCP_Commands.ps1</File>
   </OpenFiles>

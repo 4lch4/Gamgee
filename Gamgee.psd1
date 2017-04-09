@@ -4,21 +4,20 @@
 	 Created on:   	11/10/2016 10:49
 	 Created by:   	DevinL
 	 Organization: 	SAPIEN Technologies, Inc.
-	 Filename:     	DWL.Helper.psd1
+	 Filename:     	Gamgee.psd1
 	 -------------------------------------------------------------------------
 	 Module Manifest
 	-------------------------------------------------------------------------
-	 Module Name: DWL.Helper
+	 Module Name: Gamgee
 	===========================================================================
 #>
 
 @{
-	
 	# Script module or binary module file associated with this manifest
-	ModuleToProcess = 'DWL.Helper.psm1'
+	ModuleToProcess = 'Gamgee.psm1'
 	
 	# Version number of this module.
-	ModuleVersion = '1.0.0.0'
+	ModuleVersion = '2.0.0.0'
 	
 	# ID used to uniquely identify this module
 	GUID = '166a5d07-e161-4920-945a-d9feec6c072f'
@@ -72,12 +71,12 @@
 	
 	# Modules to import as nested modules of the module specified in
 	# ModuleToProcess
-	NestedModules = @('.\Tron-Commands.ps1')
+	NestedModules = @()
 	
 	# Functions to export from this module
-	FunctionsToExport = 'Get-RandomString', 'Get-TestFiles', 'Increment-iPowerShellVersion', `
-	'Upload-Tron', 'Start-Tron', 'Restart-Tron', 'Stop-Tron', 'Connect-TronServer', 'Connect-TronBetaServer', `
-	'Get-MortySprites', 'Get-FrontMortyImages', 'Get-BackMortyImages', 'Get-AllMortyImages'
+	FunctionsToExport = 'Get-FrontMortyImages', 'Get-BackMortyImages', 'Get-MortySprites', 'Get-AllMortyImages', `
+	'Start-VRKTrayApp', 'Get-Config', 'Set-Config', 'Upload-Tron', 'Stop-Tron', 'Start-Tron', 'Restart-Tron', 'Connect-TronServer', `
+	'Connect-TronBetaServer', 'Convert-HexToDec', 'Convert-DecToHex', 'Replace-FilenameCharacter', 'Get-RandomNumber', 'Get-RandomString', 'Update-iPowerShellVersion'
 	
 	# Cmdlets to export from this module
 	CmdletsToExport = '*'

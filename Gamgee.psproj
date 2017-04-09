@@ -1,0 +1,20 @@
+﻿<Project>
+  <Version>2.0</Version>
+  <FileID>166a5d07-e161-4920-945a-d9feec6c072f</FileID>
+  <ProjectType>1</ProjectType>
+  <Folders>
+    <Folder>Hermes</Folder>
+  </Folders>
+  <Files>
+    <File Build="2">Gamgee.psd1</File>
+    <File Build="0">Gamgee.psm1</File>
+    <File Build="2" Shared="True" ReferenceFunction="Invoke-Tron-Commands_ps1">Tron-Commands.ps1</File>
+    <File Build="2" Shared="True" ReferenceFunction="Invoke-Get-MortyPictures_ps1">Get-MortyPictures.ps1</File>
+    <File Build="2" Shared="False" ReferenceFunction="Invoke-TronCP_Commands_ps1">TronCP_Commands.ps1</File>
+    <File Build="2" Shared="True" ReferenceFunction="Invoke-SAPIEN_Commands_ps1">SAPIEN_Commands.ps1</File>
+    <File Build="2" Shared="False" ReferenceFunction="Invoke-Server_Connections_ps1">Hermes\Server_Connections.ps1</File>
+    <File Build="2" Shared="False" ReferenceFunction="Invoke-Config_Functions_ps1">Config_Functions.ps1</File>
+    <File Build="1">Hermes\config.json</File>
+  </Files>
+  <StartupScript>D:\Google_Drive\Development\PowerShell\Projects\DWL.Helper\TogglBot.ps1</StartupScript>
+</Project>

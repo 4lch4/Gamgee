@@ -1,0 +1,17 @@
+﻿<ProjectState>
+  <Version>1.0</Version>
+  <FileID>166a5d07-e161-4920-945a-d9feec6c072f</FileID>
+  <OpenFolders>
+    <Folder>Hermes</Folder>
+  </OpenFolders>
+  <OpenFiles>
+    <File>Gamgee.psm1</File>
+    <File>Get-MortyPictures.ps1</File>
+    <File>Gamgee.psd1</File>
+    <File>Hermes\Server_Connections.ps1</File>
+    <File>Config_Functions.ps1</File>
+    <File>SAPIEN_Commands.ps1</File>
+    <File>Tron-Commands.ps1</File>
+    <File>TronCP_Commands.ps1</File>
+  </OpenFiles>
+</ProjectState>

@@ -1,6 +1,6 @@
-# DWL.Helper
+# Gamgee
 A PowerShell module containing various functions that make my life easier.
-I created the module using PowerShell Studio by SAPIEN Technologies, inc.
+I created the module using [PowerShell Studio](https://www.sapien.com/software/powershell_studio) by SAPIEN Technologies, inc.
 
 ## NodeJS Projects
 There are various functions in the TronCommands.ps1 file that help with managing the public Tron bot and a few privately hosted ones.

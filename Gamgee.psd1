@@ -22,11 +22,30 @@
   CLRVersion             = '2.0.50727'
   ProcessorArchitecture  = 'None'
 
-  <#FunctionsToExport      = 'Connect-Tron', 'Export-Gamgee', 'Get-Config', 
-  'Set-Config', 'Get-FileEncoding', 'Get-ForegroundProcess', 
-  'Get-InstalledSoftware', 'Get-MortyBack', 'Get-MortyFront',
-  'Get-ReversedString', 'Get-ScriptDirectory', 'Get-Sprites', 'New-NodeModule',
-  'Remove-TrailingWhitespace', 'Test-DownloadSpeed'#>
+  NestedModules          = @(
+    '.\Utils\ConfigTools.ps1',
+    '.\Utils\ConversionTools.ps1',
+    '.\Utils\FileTools.ps1',
+    '.\Utils\Get-FileEncoding.ps1',
+    '.\Utils\Get-InstalledSoftware.ps1',
+    '.\Utils\Get-ReversedString.ps1',
+    '.\Utils\JournalTools.ps1',
+    '.\Utils\New-NodeModule.ps1',
+    '.\Utils\ProcessTools.ps1',
+    '.\Utils\RandomizingTools.ps1',
+    '.\Projects\Tron-Commands.ps1',
+    '.\Network\Test-DownloadSpeed.ps1',
+    '.\Misc\Get-MortyPictures.ps1'
+  )
+
+  FunctionsToExport      = 'Connect-Tron', 'Export-Gamgee', 'Get-Config',
+  'Set-Config', 'Get-FileEncoding', 'Get-ActiveProcess', 
+  'Get-InstalledSoftware', 'Get-MortyBack', 'Get-MortyFront', 'Get-Sprites',
+  'Get-ReversedString', 'Get-ScriptDirectory', 'New-NodeModule',
+  'Remove-TrailingWhitespace', 'Test-DownloadSpeed', 'Convert-DecToHex',
+  'Convert-HexToDec', 'Update-FilenameCharacter', 'Get-RandomNumber',
+  'Get-RandomString'
+
 
   PrivateData            = @{
     PSData = @{

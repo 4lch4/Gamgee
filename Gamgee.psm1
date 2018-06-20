@@ -19,21 +19,12 @@ function Export-Gamgee {
 
 function Get-ScriptDirectory {
   [CmdletBinding()]
-  param ()
-
-  $Invocation = (Get-Variable MyInvocation -Scope 1).Value
-  Split-Path $Invocation.MyCommand.Path
+	[OutputType([string])]
+	param ()
+	if ($null -ne $hostinvocation) {
+		Split-Path $hostinvocation.MyCommand.path
+	}
+	else {
+		Split-Path $script:MyInvocation.MyCommand.Path
+	}
 }
-
-Get-ChildItem -Recurse -Path $PSScriptRoot -Filter '*.ps1' -Exclude 'Test-Module.ps1' | ForEach-Object { . $_.FullName }
-
-$ExportedFunctions = @(
-  'Connect-Tron', 'Export-Gamgee', 'Get-Config', 'Set-Config',
-  'Get-FileEncoding', 'Get-ForegroundProcess', 'Get-InstalledSoftware',
-  'Get-MortyBack', 'Get-MortyFront', 'Get-Sprites', 'Get-ReversedString',
-  'Get-ScriptDirectory', 'New-NodeModule', 'Remove-TrailingWhitespace',
-  'Test-DownloadSpeed', 'Convert-DecToHex', 'Convert-HexToDec',
-  'Update-FilenameCharacter', 'Get-RandomNumber', 'Get-RandomString'
-)
-
-Export-ModuleMember -Function $ExportedFunctions

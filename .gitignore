@@ -1,12 +1,4 @@
-﻿*.TempPoint.*
-*.Export.*
-*.psprojs
-*.RestorePoint.*
-*.Run.ps1
-*.Package.ps1
-CustomMenu.inf
-
-# Windows image file caches
+﻿# Windows image file caches
 Thumbs.db
 ehthumbs.db
 

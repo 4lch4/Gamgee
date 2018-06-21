@@ -41,11 +41,10 @@
   FunctionsToExport      = 'Connect-Tron', 'Export-Gamgee', 'Get-Config',
   'Set-Config', 'Get-FileEncoding', 'Get-ActiveProcess', 
   'Get-InstalledSoftware', 'Get-MortyBack', 'Get-MortyFront', 'Get-Sprites',
-  'Get-ReversedString', 'Get-ScriptDirectory', 'New-NodeModule',
-  'Remove-TrailingWhitespace', 'Test-DownloadSpeed', 'Convert-DecToHex',
-  'Convert-HexToDec', 'Update-FilenameCharacter', 'Get-RandomNumber',
-  'Get-RandomString'
-
+  'Get-ReversedString', 'Get-ScriptDirectory', 'New-NodeModule', 
+  'New-JournalEntry', 'Remove-TrailingWhitespace', 'Test-DownloadSpeed',
+  'Convert-DecToHex', 'Convert-HexToDec', 'Update-FilenameCharacter',
+  'Get-RandomNumber', 'Get-RandomString'
 
   PrivateData            = @{
     PSData = @{

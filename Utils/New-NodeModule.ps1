@@ -6,7 +6,7 @@
 # ===========================================================================
 
 # .ExternalHelp .\Help_Files\New-NodeModule-Help.xml
-function New-NodeModuless {
+function New-NodeModule {
   [CmdletBinding(SupportsShouldProcess = $true)]
   [Alias('nodemod', 'new-nodemod', 'newmod', 'newmodule', 'newnpm')]
   param (

@@ -7,7 +7,7 @@
 # =============================================================================
 
 $HeaderTime = Get-Date -UFormat "%Y-%m-%d @ %R"
-$EntryTemplate = @"
+$FutureEntryTemplate = @"
 # Journal Entry for $HeaderTime
 
 ## What are you main tasks for today/what are you working on
@@ -19,6 +19,10 @@ $EntryTemplate = @"
 ## How did I help someone today
 
 ## What did I do to further HassleFree Solutions
+"@
+
+$EntryTemplate = @"
+# Journal Entry for $HeaderTime
 "@
 
 function New-JournalEntry {

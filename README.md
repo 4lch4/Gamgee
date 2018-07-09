@@ -5,18 +5,6 @@ I created the module using [PowerShell Studio][0] by SAPIEN Technologies, Inc. a
 
 _NOTE: The following sections do not cover every single function within the module, instead it covers ones I felt should be highlighted for whatever reason. I try to explain the reasoning (to an extent) within the section itself._
 
-## NodeJS Projects
-
-There are various functions in the TronCommands.ps1 file that help with managing the public Tron bot and a few privately hosted ones.
-The functions help with:
-
-- Uploading the latest version of specific builds.
-- Starting the service for a specific user.
-- Restarting the service for a specific user.
-- Stopping the service for a specific user.
-- Connecting to the server that hosts the various bots.
-- Connecting to the beta server that I test new versions of the bots.
-
 ## Configuration/Environment Variable Functions
 
 There are a few functions that are for handling environment variables for easier manipulation of the machine/user level path variables. Instead of having to open the GUI or executing one hell of a "one-liner", you can use these functions to help out:

@@ -11,7 +11,7 @@
 
 @{
   RootModule             = 'Gamgee.psm1'
-  ModuleVersion          = '1.0.3'
+  ModuleVersion          = '1.0.4'
   GUID                   = '4abc5b62-bf86-4fe0-b34a-68e6cbc697ae'
   Author                 = 'Alcha'
   CompanyName            = 'HassleFree Solutions, LLC'
@@ -38,13 +38,14 @@
     '.\Misc\Get-MortyPictures.ps1'
   )
 
-  FunctionsToExport      = 'Connect-Tron', 'Export-Gamgee', 'Get-Config',
-  'Set-Config', 'Get-FileEncoding', 'Get-ActiveProcess', 
-  'Get-InstalledSoftware', 'Get-MortyBack', 'Get-MortyFront', 'Get-Sprites',
-  'Get-ReversedString', 'Get-ScriptDirectory', 'New-NodeModule', 
-  'New-JournalEntry', 'Remove-TrailingWhitespace', 'Test-DownloadSpeed',
-  'Convert-DecToHex', 'Convert-HexToDec', 'Update-FilenameCharacter',
-  'Get-RandomNumber', 'Get-RandomString'
+  FunctionsToExport      = 'Connect-Tron', 'Export-Gamgee', 'Get-UserVariable',
+    'Get-MachineVariable', 'Get-IsUserAdmin', 'Set-UserVariable',
+    'Set-MachineVariable', 'Get-FileEncoding', 'Get-ActiveProcess', 
+    'Get-InstalledSoftware', 'Get-MortyBack', 'Get-MortyFront', 'Get-Sprites',
+    'Get-ReversedString', 'Get-ScriptDirectory', 'New-NodeModule',
+    'New-JournalEntry', 'Remove-ExcessWhitespace', 'Test-DownloadSpeed',
+    'Convert-DecToHex', 'Convert-HexToDec', 'Update-FilenameCharacter',
+    'Get-RandomNumber', 'Get-RandomString'
 
   PrivateData            = @{
     PSData = @{

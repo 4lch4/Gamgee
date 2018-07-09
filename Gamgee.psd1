@@ -33,6 +33,7 @@
     '.\Utils\New-NodeModule.ps1',
     '.\Utils\ProcessTools.ps1',
     '.\Utils\RandomizingTools.ps1',
+    '.\Utils\Remove-ExcessWhitespace.ps1'
     '.\Projects\Tron-Commands.ps1',
     '.\Network\Test-DownloadSpeed.ps1',
     '.\Misc\Get-MortyPictures.ps1'

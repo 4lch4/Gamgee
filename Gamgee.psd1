@@ -79,9 +79,6 @@
   # Tron-Commands.ps1
   'Connect-Tron',
 
-  # Test-DownloadSpeed.ps1
-  'Test-DownloadSpeed',
-
   # Send-DataToDiscord.ps1
   'Send-ToDiscord',
 

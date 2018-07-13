@@ -1,4 +1,4 @@
-# ===========================================================================
+﻿# ===========================================================================
 #  Created on:   	6/7/2018 @ 09:03
 #  Created by:   	Alcha
 #  Organization: 	HassleFree Solutions, LLC
@@ -22,7 +22,7 @@
   CLRVersion             = '2.0.50727'
   ProcessorArchitecture  = 'None'
 
-  NestedModules = @(
+  NestedModules          = @(
     '.\Utils\ConfigTools.ps1',
     '.\Utils\ConversionTools.ps1',
     '.\Utils\FileTools.ps1',
@@ -40,17 +40,58 @@
     '.\Misc\Get-MortyPictures.ps1'
   )
 
-  FunctionsToExport = 'Connect-Tron', 'Get-UserVariable', 'Start-Timer',
-    'Get-MachineVariable', 'Get-IsUserAdmin', 'Set-UserVariable',
-    'Set-MachineVariable', 'Get-FileEncoding', 'Get-ActiveProcess',
-    'Get-InstalledSoftware', 'Get-MortyBack', 'Get-MortyFront', 'Get-Sprites',
-    'Get-ReversedString', 'Get-ScriptDirectory', 'New-NodeModule',
-    'New-JournalEntry', 'Remove-ExcessWhitespace', 'Test-DownloadSpeed',
-    'Convert-DecToHex', 'Convert-HexToDec', 'Update-FilenameCharacter',
-    'Get-RandomNumber', 'Get-RandomString', 'New-ScheduledScript',
-    'Send-DailyReportToDiscord', 'Get-InstalledSoftwareAsHtml', 'Send-ToDiscord'
+  FunctionsToExport      =
+  # Gamgee.psm1
+  'Get-ScriptDirectory', 'Move-Up',
 
-  PrivateData = @{
+  # ConfigTools.ps1
+  'Get-UserVariable', 'Get-MachineVariable',
+  'Set-UserVariable', 'Set-MachineVariable',
+  'Remove-UserVariable', 'Remove-MachineVariable',
+
+  # ConversionTools.ps1
+  'Convert-HexToDec', 'Convert-DecToHex',
+
+  # FileTools.ps1
+  'Update-FilenameCharacter', 'Remove-ExcessWhitespace', 'Get-FileEncoding',
+
+  # Get-InstalledSoftware.ps1
+  'Get-InstalledSoftware', 'Get-InstalledSoftwareAsHtml',
+
+  # JournalTools.ps1
+  'New-JournalEntry',
+
+  # New-NodeModule.ps1
+  'New-NodeModule',
+
+  # New-ScheduledScript.ps1
+  'New-ScheduledScript',
+
+  # ProcessTools.ps1
+  'Get-ActiveProcess',
+
+  # RandomizingTools.ps1
+  'Get-RandomNumber', 'Get-RandomString', 'Get-ReversedString',
+
+  # TimerTools.ps1
+  'Start-Timer',
+
+  # Tron-Commands.ps1
+  'Connect-Tron',
+
+  # Test-DownloadSpeed.ps1
+  'Test-DownloadSpeed',
+
+  # Send-DataToDiscord.ps1
+  'Send-ToDiscord',
+
+  # Send-DailyReportToDiscord.ps1
+  'Send-DailyReportToDiscord',
+
+  # Get-MortyPictures.ps1
+  'Get-MortyBack', 'Get-MortyFront', 'Get-Sprites'
+
+  PrivateData            = @{
     PSData = @{
       LicenseUri = 'https://opensource.org/licenses/MIT'
       ProjectUri = 'https://github.com/Alcha/Gamgee'

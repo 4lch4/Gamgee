@@ -22,37 +22,39 @@
   CLRVersion             = '2.0.50727'
   ProcessorArchitecture  = 'None'
 
-  NestedModules          = @(
+  NestedModules = @(
     '.\Utils\ConfigTools.ps1',
     '.\Utils\ConversionTools.ps1',
     '.\Utils\FileTools.ps1',
-    '.\Utils\Get-FileEncoding.ps1',
     '.\Utils\Get-InstalledSoftware.ps1',
-    '.\Utils\Get-ReversedString.ps1',
     '.\Utils\JournalTools.ps1',
     '.\Utils\New-NodeModule.ps1',
+    '.\Utils\New-ScheduledScript.ps1',
     '.\Utils\ProcessTools.ps1',
     '.\Utils\RandomizingTools.ps1',
-    '.\Utils\Remove-ExcessWhitespace.ps1'
+    '.\Utils\TimerTools.ps1',
     '.\Projects\Tron-Commands.ps1',
     '.\Network\Test-DownloadSpeed.ps1',
+    '.\Network\Send-DataToDiscord.ps1',
+    '.\Network\Send-DailyReportToDiscord.ps1',
     '.\Misc\Get-MortyPictures.ps1'
   )
 
-  FunctionsToExport      = 'Connect-Tron', 'Export-Gamgee', 'Get-UserVariable',
+  FunctionsToExport = 'Connect-Tron', 'Get-UserVariable', 'Start-Timer',
     'Get-MachineVariable', 'Get-IsUserAdmin', 'Set-UserVariable',
-    'Set-MachineVariable', 'Get-FileEncoding', 'Get-ActiveProcess', 
+    'Set-MachineVariable', 'Get-FileEncoding', 'Get-ActiveProcess',
     'Get-InstalledSoftware', 'Get-MortyBack', 'Get-MortyFront', 'Get-Sprites',
     'Get-ReversedString', 'Get-ScriptDirectory', 'New-NodeModule',
     'New-JournalEntry', 'Remove-ExcessWhitespace', 'Test-DownloadSpeed',
     'Convert-DecToHex', 'Convert-HexToDec', 'Update-FilenameCharacter',
-    'Get-RandomNumber', 'Get-RandomString'
+    'Get-RandomNumber', 'Get-RandomString', 'New-ScheduledScript',
+    'Send-DailyReportToDiscord', 'Get-InstalledSoftwareAsHtml', 'Send-ToDiscord'
 
-  PrivateData            = @{
+  PrivateData = @{
     PSData = @{
       LicenseUri = 'https://opensource.org/licenses/MIT'
       ProjectUri = 'https://github.com/Alcha/Gamgee'
       IconUri    = 'http://www.iconj.com/ico/z/6/z6xbh3kpa6.ico'
-    }        
+    }
   }
 }

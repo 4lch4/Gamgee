@@ -9,6 +9,33 @@
 
 <#
 .SYNOPSIS
+  Gets a user enviornment variable and returns it.
+
+.PARAMETER Name
+  The name of the variable you want to retrieve.
+
+.EXAMPLE
+  PS C:\> Get-UserVariable -Name DISCORD_WEBHOOK
+'https://bit.ly/ThisIsAShortedURLWebhook'
+
+.NOTES
+  Uses the GetEnvironmentVariable function from the Environment namespace.
+#>
+function Get-UserVariable {
+  [CmdletBinding()]
+  [Alias('guv')]
+  param (
+    [Parameter(Mandatory = $true, Position = 0)]
+    [Alias('Var')]
+    [System.String]
+    $Name
+  )
+
+  return [System.Environment]::GetEnvironmentVariable($Name, [System.EnvironmentVariableTarget]::User)
+}
+
+<#
+.SYNOPSIS
   Set a user level environment variable.
 
 .DESCRIPTION
@@ -32,6 +59,7 @@ level environment variable if you need it available for more than one user.
 #>
 function Set-UserVariable {
   [CmdletBinding()]
+  [Alias('suv')]
   param (
     [Parameter(Mandatory = $true, Position = 0)]
     [Alias('VariableName', 'VarName', 'Var')]
@@ -57,6 +85,68 @@ function Set-UserVariable {
 
 <#
 .SYNOPSIS
+  Remove a User level environment variable.
+
+.DESCRIPTION
+  Remove a User level environment variable with provided name.
+
+.PARAMETER Name
+  The name of the variable you wish to remove.
+
+.EXAMPLE
+  PS C:\> Remove-UserVariable -Name TestVarA
+  The variable "TestVarA" has been removed.
+#>
+function Remove-UserVariable {
+  [CmdletBinding()]
+  [Alias('ruv', 'Delete-UserVariable')]
+  param (
+    [Parameter(Mandatory = $true,
+      Position = 0,
+      HelpMessage = 'Which User variable would you like to remove from the environment path?')]
+    [Alias('Variable', 'Var')]
+    [System.String]
+    $Name
+  )
+
+  if ($Name -match ' ') {
+    Write-Error -Message 'The provided variable name contains a space. Try replacing the space with an underscore (_).'`
+      -RecommendedAction 'Replace the space with an underscore.'
+  } else {
+    try {
+      [System.Environment]::SetEnvironmentVariable($Name, $null, [System.EnvironmentVariableTarget]::User)
+
+      Write-Host "The variable `"$Name`" has been removed."
+    } catch { Write-Error $_ }
+  }
+}
+
+<#
+.SYNOPSIS
+  Gets a Machine enviornment variable and returns it.
+
+.PARAMETER Name
+  The name of the variable you want to retrieve.
+
+.EXAMPLE
+  PS C:\> Get-MachineVariable -Name DISCORD_WEBHOOK
+'https://bit.ly/ThisIsAShortedURLWebhook'
+#>
+function Get-MachineVariable {
+  [CmdletBinding()]
+  [Alias('gmv')]
+  param (
+    [Parameter(Mandatory = $true, Position = 0)]
+    [Alias('Var')]
+    [System.String]
+    $Name
+  )
+
+  return [System.Environment]::GetEnvironmentVariable($Name, [System.EnvironmentVariableTarget]::Machine)
+}
+
+<#
+.SYNOPSIS
   Set a machine level environment variable.
 
 .DESCRIPTION
@@ -78,6 +168,7 @@ rights.
 #>
 function Set-MachineVariable {
   [CmdletBinding()]
+  [Alias('smv')]
   param (
     [Parameter(Mandatory = $true, Position = 0)]
     [Alias('VariableName', 'VarName', 'Var')]
@@ -90,9 +181,9 @@ function Set-MachineVariable {
     $Value
   )
 
-  if ($Name -match ' ') { 
+  if ($Name -match ' ') {
     Write-Error -Message 'The provided variable name contains a space. Try replacing the space with an underscore (_).' `
-    -RecommendedAction 'Replace the space with an underscore.'
+      -RecommendedAction 'Replace the space with an underscore.'
   } else {
     if (Get-IsUserAdmin) {
       try {
@@ -106,6 +197,51 @@ function Set-MachineVariable {
       Write-Warning 'Launching PowerShell as an Administrator now...'
 
       Start-Process powershell -Verb runAs -ArgumentList "Set-MachineVariable $Name $Value"
+    }
+  }
+}
+
+<#
+.SYNOPSIS
+  Remove a Machine level environment variable.
+
+.DESCRIPTION
+  Remove a Machine level environment variable with provided name.
+
+.PARAMETER Name
+  The name of the variable you wish to remove.
+
+.EXAMPLE
+  PS C:\> Remove-MachineVariable -Name TestVarA
+  The variable "TestVarA" has been removed.
+#>
+function Remove-MachineVariable {
+  [CmdletBinding()]
+  [Alias('rmv', 'Delete-MachineVariable')]
+  param (
+    [Parameter(Mandatory = $true,
+      Position = 0,
+      HelpMessage = 'Which Machine variable would you like to remove from the environment path?')]
+    [Alias('Variable', 'Var')]
+    [System.String]
+    $Name
+  )
+
+  if ($Name -match ' ') {
+    Write-Error -Message 'The provided variable name contains a space. Try replacing the space with an underscore (_).'`
+      -RecommendedAction 'Replace the space with an underscore.'
+  } else {
+    if (Get-IsUserAdmin) {
+      try {
+        [System.Environment]::SetEnvironmentVariable($Name, $null, [System.EnvironmentVariableTarget]::Machine)
+
+        Write-Host "The variable `"$Name`" has been removed."
+      } catch { Write-Error $_ }
+    } else {
+      Write-Warning 'You must execute this function as an administrator as admin rights are required to add Machine level variables.'
+      Write-Warning 'Launching PowerShell as an Administrator now...'
+
+      Start-Process powershell -Verb runAs -ArgumentList "Remove-MachineVariable $Name"
     }
   }
 }
@@ -137,31 +273,5 @@ function Get-IsUserAdmin {
 
 
   return ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole(`
-          [Security.Principal.WindowsBuiltInRole] "Administrator")
-}
-
-<#
-.SYNOPSIS
-  Gets a user enviornment variable and returns it.
-
-.PARAMETER Name
-  The name of the variable you want to retrieve.
-
-.EXAMPLE
-  PS C:\> Get-UserVariable -Name DISCORD_WEBHOOK
-'https://bit.ly/ThisIsAShortedURLWebhook'
-
-.NOTES
-  Uses the GetEnvironmentVariable function from the Environment namespace.
-#>
-function Get-UserVariable {
-  [CmdletBinding()]
-  param (
-    [Parameter(Mandatory = $true, Position = 0)]
-    [Alias('Var')]
-    [System.String]
-    $Name
-  )
-
-  return [System.Environment]::GetEnvironmentVariable($Name)
+      [Security.Principal.WindowsBuiltInRole] "Administrator")
 }

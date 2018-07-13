@@ -10,11 +10,25 @@
 #               system for filenames and they're named after the Morty instead.
 # =============================================================================
 
+<#
+.SYNOPSIS
+  Retrieves the front images for Morty.
+
+.DESCRIPTION
+  Retrieves the front images for Morty from the PocketMortys website.
+
+.PARAMETER StorageDir
+  The directory to store the images in. Defaults to
+E:\Media\Pictures\Rick_and_Morty.
+
+.EXAMPLE
+  PS C:\> Get-MortyFront
+#>
 function Get-MortyFront {
   [CmdletBinding()]
   param (
     [Parameter(Position = 0)]
-    [String]$StorageDir = "D:\Media\Pictures\Morty\"
+    [String]$StorageDir = "E:\Media\Pictures\Rick_and_Morty"
   )
 
   for ($x = 2; $x -le 168; $x++) {
@@ -31,11 +45,25 @@ function Get-MortyFront {
   }
 }
 
+<#
+.SYNOPSIS
+  Retrieves the back images for Morty.
+
+.DESCRIPTION
+  Retrieves the back images for Morty from the PocketMortys website.
+
+.PARAMETER StorageDir
+  The directory to store the images in. Defaults to
+E:\Media\Pictures\Rick_and_Morty.
+
+.EXAMPLE
+  PS C:\> Get-MortyBack
+#>
 function Get-MortyBack {
   [CmdletBinding()]
   param (
     [Parameter(Position = 0)]
-    [String]$StorageDir = "D:\Media\Pictures\Morty\"
+    [String]$StorageDir = "E:\Media\Pictures\Morty\"
   )
 
   for ($x = 2; $x -le 158; $x++) {
@@ -49,11 +77,25 @@ function Get-MortyBack {
   }
 }
 
+<#
+.SYNOPSIS
+  Retrieves the sprite images for Morty.
+
+.DESCRIPTION
+  Retrieves the sprite images for Morty from the PocketMortys website.
+
+.PARAMETER StorageDir
+  The directory to store the images in. Defaults to
+E:\Media\Pictures\Rick_and_Morty.
+
+.EXAMPLE
+  PS C:\> Get-Sprites
+#>
 function Get-Sprites {
   [CmdletBinding()]
   param (
     [Parameter(Position = 0)]
-    [String]$StorageDir = "D:\Media\Pictures\Morty\"
+    [String]$StorageDir = "E:\Media\Pictures\Morty\"
   )
 
   for ($x = 2; $x -le 158; $x++) {

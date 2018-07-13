@@ -90,8 +90,10 @@ function Set-MachineVariable {
     $Value
   )
 
-  if ($Name -match ' ') { Write-Error -Message 'The provided variable name contains a space. Try replacing the space with an underscore (_).' -RecommendedAction 'Replace the space with an underscore.'}
-  else {
+  if ($Name -match ' ') { 
+    Write-Error -Message 'The provided variable name contains a space. Try replacing the space with an underscore (_).' `
+    -RecommendedAction 'Replace the space with an underscore.'
+  } else {
     if (Get-IsUserAdmin) {
       try {
         [System.Environment]::SetEnvironmentVariable($Name, $Value, [System.EnvironmentVariableTarget]::Machine)
@@ -100,8 +102,11 @@ function Set-MachineVariable {
         Write-Host $Value
       } catch { Write-Error $_ }
     } else {
-      Write-Error 'You must execute this function as an administrator as admin rights are required to add Machine level variables.'
-     }
+      Write-Warning 'You must execute this function as an administrator as admin rights are required to add Machine level variables.'
+      Write-Warning 'Launching PowerShell as an Administrator now...'
+
+      Start-Process powershell -Verb runAs -ArgumentList "Set-MachineVariable $Name $Value"
+    }
   }
 }
 

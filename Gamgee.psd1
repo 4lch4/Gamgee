@@ -34,7 +34,6 @@
     '.\Utils\RandomizingTools.ps1',
     '.\Utils\TimerTools.ps1',
     '.\Projects\Tron-Commands.ps1',
-    '.\Network\Test-DownloadSpeed.ps1',
     '.\Network\Send-DataToDiscord.ps1',
     '.\Network\Send-DailyReportToDiscord.ps1',
     '.\Misc\Get-MortyPictures.ps1'

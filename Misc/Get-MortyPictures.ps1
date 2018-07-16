@@ -63,7 +63,7 @@ function Get-MortyBack {
   [CmdletBinding()]
   param (
     [Parameter(Position = 0)]
-    [String]$StorageDir = "E:\Media\Pictures\Morty\"
+    [String]$StorageDir = "E:\Media\Pictures\Rick_and_Morty\"
   )
 
   for ($x = 2; $x -le 158; $x++) {
@@ -95,7 +95,7 @@ function Get-Sprites {
   [CmdletBinding()]
   param (
     [Parameter(Position = 0)]
-    [String]$StorageDir = "E:\Media\Pictures\Morty\"
+    [String]$StorageDir = "E:\Media\Pictures\Rick_and_Morty\"
   )
 
   for ($x = 2; $x -le 158; $x++) {

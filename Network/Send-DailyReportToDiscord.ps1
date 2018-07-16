@@ -23,7 +23,7 @@ and sends it to the $env:DISCORD_WEBHOOK for reporting.
 .EXAMPLE
   PS C:\> Send-DailyReportToDiscord -Data (.\Get-PCHealth.ps1 -DataOnly)
 #>
-function Send-DailyReportToDiscord () {
+function Send-DailyReportToDiscord {
   [CmdletBinding()]
   [Alias('Send-ReportToDiscord', 'DailyDiscordReport', 'DDR')]
   param (
@@ -66,7 +66,7 @@ is returned.
 .EXAMPLE
   PS C:\> Get-ErrorCount -EventLogs $EventLogs
 #>
-function Get-ErrorCount () {
+function Get-ErrorCount {
   [CmdletBinding()]
   param (
     [Parameter(Mandatory = $true, Position = 0)]

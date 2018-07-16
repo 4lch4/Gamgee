@@ -35,7 +35,7 @@ sent stating this is a test message and to please ignore it.
 .NOTES
   I got the idea for this script from here: http://bit.ly/GingrNinja_Webhooks
 #>
-function Send-ToDiscord () {
+function Send-ToDiscord {
   [CmdletBinding()]
   [Alias('std')]
   param (
@@ -67,7 +67,7 @@ function Send-ToDiscord () {
   catch { Write-Error $_ }
 }
 
-function Get-TestContent () {
+function Get-TestContent {
   "This is all just some test data.`n`n" + "Please ignore this message."
 }
 

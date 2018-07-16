@@ -31,7 +31,7 @@ default.
   PS C:\> Connect-Tron -Server Test
   'Connecting to test server at precognition.us'
 #>
-function Connect-Tron() {
+function Connect-Tron {
   [CmdletBinding()]
   [Alias('Tron')]
   param (

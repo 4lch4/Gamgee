@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<helpItems schema="maml" xmlns="http://msh">
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Get-FileEncoding</command:name>
+      <command:verb>Get</command:verb>
+      <command:noun>FileEncoding</command:noun>
+      <maml:description>
+        <maml:para>Gets the file encoding from the provided file.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>Determines the encoding by looking at the Byte Order Mark (BOM). Based on a port of C# code from this post (http://www.west-wind.com/Weblog/posts/197245.aspx).</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-FileEncoding</maml:name>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>Path</maml:name>
+        <maml:Description>
+          <maml:para>The path to the file you wish to determine the encoding of.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false"></command:parameterValue>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>FileInfo</maml:name>
+        <maml:Description>
+          <maml:para>The FileInfo object that represents the file of interest.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false"></command:parameterValue>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes />
+    <command:returnValues />
+    <maml:alertSet>
+      <maml:alert />
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>Get-ChildItem *.ps1 | Select-Object FullName, `
+  @{n='Encoding';e={Get-FileEncoding $_.FullName}} | `
+  Where-Object {$_.Encoding -ne 'ASCII'}</dev:code>
+        <dev:remarks>
+          <maml:para></maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code>Get-ChildItem *.ps1 | `
+  Select-Object FullName, @{n='Encoding';e={Get-FileEncoding $_.FullName}} | `
+  Where-Object {$_.Encoding -ne 'ASCII'} | `
+  ForEach-Object {(Get-Content $_.FullName) | Set-Content $_.FullName -Encoding ASCII}</dev:code>
+        <dev:remarks>
+          <maml:para></maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks />
+  </command:command>
+</helpItems>

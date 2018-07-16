@@ -16,7 +16,7 @@
   Author                 = 'Alcha'
   CompanyName            = 'HassleFree Solutions, LLC'
   Copyright              = '(c) 2018. All rights reserved.'
-  Description            = 'My helper module that contains all of my scripts/functions I use to make my life easier.'
+  Description            = 'My helper module that contains all of the scripts/functions I use to make my life easier.'
   PowerShellVersion      = '2.0'
   DotNetFrameworkVersion = '2.0'
   CLRVersion             = '2.0.50727'

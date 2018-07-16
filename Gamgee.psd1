@@ -42,7 +42,7 @@
 
   FunctionsToExport      =
   # Gamgee.psm1
-  'Get-ScriptDirectory', 'Move-Up',
+  'Get-ScriptDirectory', 'Move-Up', 'Start-PowerShellAsAdmin',
 
   # ConfigTools.ps1
   'Get-UserVariable', 'Get-MachineVariable',

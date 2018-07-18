@@ -69,17 +69,20 @@ function Set-UserVariable {
     [Parameter(Mandatory = $true, Position = 1)]
     [System.String]
     [Alias('Data', 'Datum', 'Val')]
-    $Value
+    $Value,
+
+    [Parameter(Mandatory = $false, Position = 2)]
+    [Switch]
+    $Force
   )
 
-  if ($Name -match ' ') { Write-Error -Message 'The provided variable name contains a space. Try replacing the space with an underscore (_).' -RecommendedAction 'Replace the space with an underscore.'}
-  else {
-    try {
-      [System.Environment]::SetEnvironmentVariable($Name, $Value, [System.EnvironmentVariableTarget]::User)
-
-      Write-Host "The variable `"$Name`" has been set with the following value:`n"
-      Write-Host $Value
-    } catch { Write-Error $_ }
+  if ($Name -match ' ') {
+    Write-Error -Message 'The provided variable name contains a space. Try replacing the space with an underscore (_).' `
+      -RecommendedAction 'Replace the space with an underscore.'
+  } else {
+    if ((Get-VariableExistence -Name $Name) -and !($Force.IsPresent)) {
+      Write-Error "The variable `"$Name`" already exists, if you wish to overwrite it's existing value, provide the -Force parameter."
+    } else { Set-VarValue $Name $Value [System.EnvironmentVariableTarget]::User }
   }
 }
 
@@ -178,7 +181,11 @@ function Set-MachineVariable {
     [Parameter(Mandatory = $true, Position = 1)]
     [System.String]
     [Alias('Data', 'Datum', 'Val')]
-    $Value
+    $Value,
+
+    [Parameter(Mandatory = $false, Position = 2)]
+    [Switch]
+    $Force
   )
 
   if ($Name -match ' ') {
@@ -186,19 +193,113 @@ function Set-MachineVariable {
       -RecommendedAction 'Replace the space with an underscore.'
   } else {
     if (Get-IsUserAdmin) {
-      try {
-        [System.Environment]::SetEnvironmentVariable($Name, $Value, [System.EnvironmentVariableTarget]::Machine)
-
-        Write-Host "The variable `"$Name`" has been set with the following value:`n"
-        Write-Host $Value
-      } catch { Write-Error $_ }
+      if ((Get-VariableExistence -Name $Name) -and !($Force.IsPresent)) {
+        Write-Error "The variable `"$Name`" already exists, if you wish to overwrite it's existing value, provide the -Force parameter."
+      } else { Set-VarValue $Name $Value [System.EnvironmentVariableTarget]::Machine }
     } else {
-      Write-Warning 'You must execute this function as an administrator as admin rights are required to add Machine level variables.'
-      Write-Warning 'Launching PowerShell as an Administrator now...'
-
-      Start-Process powershell -Verb runAs -ArgumentList "Set-MachineVariable $Name $Value"
+      if ((Get-VariableExistence -Name $Name) -and !($Force.IsPresent)) {
+        Write-Error "The variable `"$Name`" already exists, if you wish to overwrite it's existing value, provide the -Force parameter."
+      } else { Set-VarValueAsAdmin $Name $Value }
     }
   }
+}
+
+<#
+.SYNOPSIS
+  Sets a variable value, mostly used internally by the ConfigTools.ps1 script.
+
+.PARAMETER Name
+  The name of the variable to set.
+
+.PARAMETER Value
+  The value of the variable.
+
+.EXAMPLE
+  PS C:\> Set-VarValue Test "Testing some data"
+  The variable "Test" has been set with the following value:
+
+  Testing some data
+#>
+function Set-VarValue {
+  param (
+    [Parameter(Position = 0)]
+    $Name,
+
+    [Parameter(Position = 1)]
+    $Value,
+
+    [Parameter(Position = 2)]
+    $Target
+  )
+
+  try {
+    [System.Environment]::SetEnvironmentVariable($Name, $Value, $Target)
+
+    Write-Output "The variable `"$Name`" has been set with the following value:`n"
+    Write-Output $Value
+  } catch { Write-Error $_ }
+}
+
+<#
+.SYNOPSIS
+  Sets a variable value as an admin, used by the ConfigTools.ps1 script.
+
+.PARAMETER Name
+  The name of the variable to set.
+
+.PARAMETER Value
+  The value of the variable.
+
+.EXAMPLE
+  PS C:\> Set-VarValueAsAdmin Test "Testing some data"
+  The variable "Test" has been set with the following value:
+
+  Testing some data
+#>
+function Set-VarValueAsAdmin {
+  param (
+    [Parameter(Position = 0)]
+    $Name,
+
+    [Parameter(Position = 1)]
+    $Value
+  )
+
+  Write-Warning 'You must execute this function as an administrator as admin rights are required to add Machine level variables.'
+  Write-Warning 'Launching PowerShell as an Administrator now...'
+
+  Start-Process powershell -Verb runAs -ArgumentList "Set-VarValue $Name $Value Machine"
+
+  Write-Host "The variable `"$Name`" has been set with the following value:`n"
+  Write-Host $Value
+}
+
+<#
+.SYNOPSIS
+  Determines if a given variable exists on the User or Machine level.
+
+.DESCRIPTION
+  Checks if the given variable name exists on a User or Machine level and
+returns $true or $false based on that.
+
+.PARAMETER Name
+  The name of the variable to see if it exists.
+
+.EXAMPLE
+  PS C:\> Get-VariableExistence -Name Test
+  true
+#>
+function Get-VariableExistence {
+  [Alias('VarStatus')]
+  param (
+    [System.String]
+    $Name
+  )
+
+  if (($null -ne [System.Environment]::GetEnvironmentVariable($Name, [System.EnvironmentVariableTarget]::User)) -or `
+    ($null -ne [System.Environment]::GetEnvironmentVariable($Name, [System.EnvironmentVariableTarget]::Machine))) {
+    return $true
+  } else { return $false }
 }
 
 <#

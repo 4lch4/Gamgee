@@ -47,6 +47,7 @@
   'Get-UserVariable', 'Get-MachineVariable',
   'Set-UserVariable', 'Set-MachineVariable',
   'Remove-UserVariable', 'Remove-MachineVariable',
+  'Set-VarValue', 'Set-VarValueAsAdmin', 'Get-VariableExistence',
 
   # ConversionTools.ps1
   'Convert-HexToDec', 'Convert-DecToHex',

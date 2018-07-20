@@ -30,6 +30,7 @@
     '.\Utils\JournalTools.ps1',
     '.\Utils\New-NodeModule.ps1',
     '.\Utils\New-ScheduledScript.ps1',
+    '.\Utils\PCHealth.ps1',
     '.\Utils\ProcessTools.ps1',
     '.\Utils\RandomizingTools.ps1',
     '.\Utils\TimerTools.ps1',
@@ -86,7 +87,10 @@
   'Send-DailyReportToDiscord',
 
   # Get-MortyPictures.ps1
-  'Get-MortyBack', 'Get-MortyFront', 'Get-Sprites'
+  'Get-MortyBack', 'Get-MortyFront', 'Get-Sprites',
+
+  # PCHealth.ps1
+  'Get-PCHealth'
 
   PrivateData            = @{
     PSData = @{

@@ -55,7 +55,7 @@ function Get-InstalledSoftware {
 
       $script:MasterKeys = ($script:MasterKeys | Where-Object {
           ($null -ne $_.Name) -and ($_.SystemComponent -ne "1") -and ($null -eq $_.ParentKeyName)
-        } | Select-Object ComputerName, Name, Version, UninstallCommand | Sort-Object Name)
+        } | Select-Object ComputerName, Name, Version, UninstallCommand, InstallDate | Sort-Object Name)
 
       return $script:MasterKeys
     }

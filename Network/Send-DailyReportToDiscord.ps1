@@ -46,9 +46,25 @@ function Send-DailyReportToDiscord {
     "- You are using $($Data.OS.Caption) build number $($Data.OS.BuildNumber).`n" +
     "- Your last boot time was $($Data.OS.LastBootTime).`n" +
     "- You have logged $(Get-ErrorCount $Data.AppEvent) app event errors since your last boot.`n" +
+    "- You have installed $($Data.NewlyInstalledApps.Length) programs since the last report:`n" +
+    "$(Get-NewAppsStr $Data.NewlyInstalledApps)" +
   "``````"
 
   Send-ToDiscord -Content $DataMsg
+}
+
+function Get-NewAppsStr {
+  param (
+    $InstalledApps
+  )
+
+  $String = @()
+
+  ForEach ($App in $InstalledApps) {
+    $String += "  - $($App.Name)`n"
+  }
+
+  return $String -join ''
 }
 
 <#

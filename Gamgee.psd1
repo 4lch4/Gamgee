@@ -11,12 +11,12 @@
 
 @{
   RootModule             = 'Gamgee.psm1'
-  ModuleVersion          = '1.0.5'
+  ModuleVersion          = '1.0.6'
   GUID                   = '4abc5b62-bf86-4fe0-b34a-68e6cbc697ae'
   Author                 = 'Alcha'
   CompanyName            = 'HassleFree Solutions, LLC'
   Copyright              = '(c) 2018. All rights reserved.'
-  Description            = 'My helper module that contains all of the scripts/functions I use to make my life easier.'
+  Description            = 'Our helper module that contains the various scripts/functions used within HassleFree Solutions.'
   PowerShellVersion      = '2.0'
   DotNetFrameworkVersion = '2.0'
   CLRVersion             = '2.0.50727'
@@ -42,7 +42,8 @@
 
   FunctionsToExport      =
   # Gamgee.psm1
-  'Get-ScriptDirectory', 'Move-Up', 'Start-PowerShellAsAdmin',
+  'Get-ScriptDirectory', 'Move-Up', 'Restart-PM2App', 'Start-GitKraken',
+  'Start-PowerShellAsAdmin',
 
   # ConfigTools.ps1
   'Get-UserVariable', 'Get-MachineVariable',

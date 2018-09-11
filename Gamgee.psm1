@@ -1,4 +1,4 @@
-﻿# ===========================================================================
+# ===========================================================================
 #  Created on:   	11/19/2016 @ 10:07 AM
 #  Created by:   	Alcha
 #  Organization: 	HassleFree Solutions, LLC
@@ -19,7 +19,7 @@ function Export-Gamgee {
 
 function Get-ScriptDirectory {
   [CmdletBinding()]
-	[OutputType([string])]
+	[OutputType([System.String])]
 	param ()
 	if ($null -ne $hostinvocation) {
 		Split-Path $hostinvocation.MyCommand.path
@@ -58,4 +58,33 @@ function Start-PowerShellAsAdmin {
 	param ()
 
 	Start-Process PowerShell -Verb runAs
+}
+
+function Start-GitKraken {
+	[CmdletBinding()]
+	[Alias('kraken', 'gk')]
+	param ()
+	Write-Output 'Launching GitKraken...'
+	Start-Process -FilePath "C:\Users\Alcha\AppData\Local\gitkraken\Update.exe" `
+								-ArgumentList '--processStart "gitkraken.exe"'
+}
+
+function Restart-PM2App {
+	[CmdletBinding()]
+	[Alias('Restart-App', 'restart-pm2', 'rpm2')]
+	param (
+		# The name of the PM2 app to restart
+		[Parameter(Position = 0, Mandatory = $true)]
+		[System.String]
+		$AppName,
+
+		# Whether or not you'd like to follow the log after restart, default is true
+		[Parameter(Position = 1)]
+		[bool]
+		$FollowLog = $true
+	)
+
+	pm2 restart $AppName
+
+	if ($FollowLog) { pm2 logs $AppName }
 }

@@ -82,7 +82,7 @@ function Set-UserVariable {
   } else {
     if ((Get-VariableExistence -Name $Name) -and !($Force.IsPresent)) {
       Write-Error "The variable `"$Name`" already exists, if you wish to overwrite it's existing value, provide the -Force parameter."
-    } else { Set-VarValue $Name $Value [System.EnvironmentVariableTarget]::User }
+    } else { Set-VarValue $Name $Value 'User' }
   }
 }
 

@@ -1,4 +1,4 @@
-﻿# =============================================================================
+# =============================================================================
 #  Created On:   2018/07/09 @ 15:48
 #  Created By:   Alcha
 #  Organization: HassleFree Solutions, LLC
@@ -92,7 +92,12 @@ function Get-Filename {
   param ()
 
   $LogDirDate = Get-Date -UFormat "%Y-%m"
-  $FileDir = "E:\Logs\$LogDirDate"
+  if (Get-VariableExistence -Name 'DATADRIVE') {
+    $FileDir = "$(Get-UserVariable -Name 'DATADRIVE'):\Logs"
+  } else {
+    $FileDir = Join-Path -Path 'C:\Logs'
+  }
+  $FileDir = Join-Path -Path $FileDir -ChildPath $LogDirDate
   Write-Verbose "FileDir = $FileDir"
 
   if (!(Test-Path $FileDir)) {

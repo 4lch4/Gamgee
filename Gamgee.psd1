@@ -42,20 +42,19 @@
 
   FunctionsToExport      =
   # Gamgee.psm1
-  'Get-ScriptDirectory', 'Move-Up', 'Restart-PM2App', 'Start-GitKraken',
-  'Start-PowerShellAsAdmin',
+  'Get-IsAdmin', 'Restart-PM2App', 'Start-GitKraken', 'Start-PowerShellAsAdmin',
 
   # ConfigTools.ps1
-  'Get-UserVariable', 'Get-MachineVariable',
-  'Set-UserVariable', 'Set-MachineVariable',
-  'Remove-UserVariable', 'Remove-MachineVariable',
+  'Get-UserVariable', 'Get-MachineVariable', 'Set-UserVariable',
+  'Set-MachineVariable', 'Remove-UserVariable', 'Remove-MachineVariable',
   'Set-VarValue', 'Set-VarValueAsAdmin', 'Get-VariableExistence',
 
   # ConversionTools.ps1
   'Convert-HexToDec', 'Convert-DecToHex',
 
   # FileTools.ps1
-  'Update-FilenameCharacter', 'Remove-ExcessWhitespace', 'Get-FileEncoding',
+  'Get-ScriptDirectory', 'Move-Up', 'Update-FilenameCharacter',
+  'Remove-ExcessWhitespace', 'Get-FileEncoding',
 
   # Get-InstalledSoftware.ps1
   'Get-InstalledSoftware', 'Get-InstalledSoftwareAsHtml',

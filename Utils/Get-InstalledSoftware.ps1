@@ -1,4 +1,4 @@
-﻿# =============================================================================
+# =============================================================================
 #	 Created on:   06/16/18 @ 11:21
 #	 Created by:   Alcha
 #	 Organization: HassleFree Solutions, LLC
@@ -32,7 +32,7 @@ function Get-InstalledSoftware {
   )
 
   begin {
-    $LMKeys = "Software\Microsoft\Windows\CurrentVersion\Uninstall", "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall"
+    $LMKeys = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall", "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall"
     $LMType = [Microsoft.Win32.RegistryHive]::LocalMachine
     $CUKeys = "Software\Microsoft\Windows\CurrentVersion\Uninstall"
     $CUType = [Microsoft.Win32.RegistryHive]::CurrentUser

@@ -40,7 +40,7 @@ function Send-DailyReportToDiscord {
     $MentionTag = "<@$env:DISCORD_ALCHA_USER_ID>"
   }
 
-  $DataMsg = "$MentionTag, Here is your daily report:`n" +
+  $DataMsg = "$MentionTag, Here is your daily report for ``$env:COMPUTERNAME``:`n" +
   "``````markdown`n" +
     "- You currently have $($Data.InstalledApps.Length) installed programs.`n"+
     "- You are using $($Data.OS.Caption) build number $($Data.OS.BuildNumber).`n" +

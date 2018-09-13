@@ -42,10 +42,10 @@ function New-JournalEntry {
   param ()
 
   $JournalDir = "E:\Writing\Journal"
-  if (!(Test-Path $JournalDir)) { New-Item -Path $JournalDir -ItemType Directory -Force }
+  if (!(Test-Path $JournalDir)) { New-Item -Path $JournalDir -ItemType Directory -Force | Out-Null }
 
   $FileDir = Join-Path $JournalDir (Get-Date -Format 'yyyy-MM')
-  if (!(Test-Path $FileDir)) { New-Item -Path $FileDir -ItemType Directory -Force }
+  if (!(Test-Path $FileDir)) { New-Item -Path $FileDir -ItemType Directory -Force | Out-Null }
   
   $Filename = Join-Path $FileDir ((Get-Date -Format 'yyyy-MM-dd') + '.md')
 

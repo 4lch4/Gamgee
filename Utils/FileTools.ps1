@@ -289,3 +289,28 @@ function Get-FileEncoding {
     }
   }
 }
+
+
+function Get-ScriptDirectory {
+  [CmdletBinding()]
+	[OutputType([System.String])]
+	param ()
+	if ($null -ne $hostinvocation) {
+		Split-Path $hostinvocation.MyCommand.path
+	}
+	else {
+		Split-Path $script:MyInvocation.MyCommand.Path
+	}
+}
+
+<#
+.SYNOPSIS
+	Attempts to move you up one directory from your current location.
+#>
+function Move-Up {
+	[CmdletBinding()]
+	[Alias('up')]
+	param ()
+
+	Set-Location -Path '..'
+}

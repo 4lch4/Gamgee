@@ -1,4 +1,4 @@
-# ===========================================================================
+﻿# ===========================================================================
 #  Created on:   	11/19/2016 @ 10:07 AM
 #  Created by:   	Alcha
 #  Organization: 	HassleFree Solutions, LLC
@@ -6,6 +6,34 @@
 #  ------------------------------------------------------------------------
 #  Module Name: Gamgee
 # ===========================================================================
+
+$WindowDllSig = @'
+public static extern bool SetWindowPos( 
+    IntPtr hWnd, 
+    IntPtr hWndInsertAfter, 
+    int X, 
+    int Y, 
+    int cx, 
+    int cy, 
+    uint uFlags); 
+'@
+
+function Set-WindowOnTop {  
+	$Type = Add-Type -MemberDefinition $WindowDllSig -Name SetWindowPosition -Namespace SetWindowPos -Using System.Text -PassThru
+
+	$Handle = (Get-Process -id $Global:PID).MainWindowHandle 
+	$AlwaysOnTop = New-Object -TypeName System.IntPtr -ArgumentList (-1) 
+	$Type::SetWindowPos($Handle, $AlwaysOnTop, 0, 0, 0, 0, 0x0003)
+}
+
+function Get-IsAdmin () {
+  [CmdletBinding()]
+  [Alias('IsAdmin')]
+  param ()
+
+  $Principal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
+  return $Principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+}
 
 function Export-Gamgee {
   [CmdletBinding()]
@@ -15,30 +43,6 @@ function Export-Gamgee {
   $Gamgee = "$ModuleDir\Gamgee"
   Remove-TrailingWhitespace -FileDir $Gamgee
   Copy-Item -Path .\ -Destination $ModuleDir -Force
-}
-
-function Get-ScriptDirectory {
-  [CmdletBinding()]
-	[OutputType([System.String])]
-	param ()
-	if ($null -ne $hostinvocation) {
-		Split-Path $hostinvocation.MyCommand.path
-	}
-	else {
-		Split-Path $script:MyInvocation.MyCommand.Path
-	}
-}
-
-<#
-.SYNOPSIS
-	Attempts to move you up one directory from your current location.
-#>
-function Move-Up {
-	[CmdletBinding()]
-	[Alias('up')]
-	param ()
-
-	Set-Location -Path '..'
 }
 
 <#

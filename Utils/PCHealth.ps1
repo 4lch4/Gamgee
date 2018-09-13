@@ -274,9 +274,9 @@ function Get-PCHealth {
     $OpenLog
 
     <#
-    TODO: Add a DataOnly switch parameter that when present, only return the
-    data for the PC health instead of all the fancy shit I do with it.
-  #>
+      TODO: Add a DataOnly switch parameter that when present, only return the
+      data for the PC health instead of all the fancy shit I do with it.
+    #>
   )
 
   Write-Verbose "Generating PC Health Report..."

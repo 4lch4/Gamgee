@@ -43,6 +43,7 @@
   FunctionsToExport      =
   # Gamgee.psm1
   'Get-IsAdmin', 'Restart-PM2App', 'Start-GitKraken', 'Start-PowerShellAsAdmin',
+  'Optimize-GitRepository',
 
   # ConfigTools.ps1
   'Get-UserVariable', 'Get-MachineVariable', 'Set-UserVariable',

@@ -26,6 +26,33 @@ function Set-WindowOnTop {
 	$Type::SetWindowPos($Handle, $AlwaysOnTop, 0, 0, 0, 0, 0x0003)
 }
 
+<#
+.DESCRIPTION
+	Cleans the given git repository using some commands that will peform a GC cycle
+to force all references to deleted files to be expired and purged from the
+packfile.
+
+.LINK
+	https://stackoverflow.com/a/11277929
+#>
+function Optimize-GitRepository {
+	[CmdletBinding()]
+	[Alias('Clean-Repo', 'Clean-GitRepo', 'cgr')]
+	param (
+		[Parameter(Mandatory = $false)]
+		[Alias('Path')]
+		[System.String]
+		$RepoPath = $PWD.Path
+	)
+	
+	if (Test-Path -Path $RepoPath) {
+		Set-Location -Path $RepoPath
+		git for-each-ref --format='delete %(refname)' refs/original | git update-ref --stdin
+		git reflog expire --expire=now --all
+		git gc --aggressive --prune=now
+	} else { Write-Error 'Invalid path provided.' }
+}
+
 function Get-IsAdmin () {
   [CmdletBinding()]
   [Alias('IsAdmin')]

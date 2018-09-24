@@ -1,4 +1,4 @@
-﻿# ===========================================================================
+# ===========================================================================
 #  Created on:   	6/7/2018 @ 09:03
 #  Created by:   	Alcha
 #  Organization: 	HassleFree Solutions, LLC
@@ -34,6 +34,7 @@
     '.\Utils\ProcessTools.ps1',
     '.\Utils\RandomizingTools.ps1',
     '.\Utils\TimerTools.ps1',
+    '.\Projects\Kyle.ps1',
     '.\Projects\Tron-Commands.ps1',
     '.\Network\Send-DataToDiscord.ps1',
     '.\Network\Send-DailyReportToDiscord.ps1',
@@ -76,6 +77,9 @@
 
   # TimerTools.ps1
   'Start-Timer',
+
+  # Kyle.ps1
+  'Test-NotesEndpoint',
 
   # Tron-Commands.ps1
   'Connect-Tron',

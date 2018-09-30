@@ -53,6 +53,36 @@ function Optimize-GitRepository {
 	} else { Write-Error 'Invalid path provided.' }
 }
 
+function Copy-CurrentPathToClipboard {
+	[CmdletBinding()]
+	[Alias('pathtoclip', 'cptc')]
+	param ()
+	
+	$CurrPath = $PWD.Path
+	Set-Clipboard -Value $CurrPath
+	Write-Output "$CurrPath has been added to the clipboard."
+}
+
+<#
+function Backup-BlogPosts {
+	[CmdletBinding()]
+	[Alias('Archive-BlogPosts', 'Archive-Blogs','abp')]
+	param (
+		[Parameter(Mandatory = $false, Position = 0)]
+		[System.String]
+	)
+	
+	begin {
+	}
+	
+	process {
+	}
+	
+	end {
+	}
+}
+#>
+
 function Get-IsAdmin () {
   [CmdletBinding()]
   [Alias('IsAdmin')]
@@ -85,7 +115,7 @@ PowerShell -Verb runAs".
 #>
 function Start-PowerShellAsAdmin {
 	[CmdletBinding()]
-	[Alias('AdminPosh')]
+	[Alias('AdminPosh', 'Admin')]
 	param ()
 
 	Start-Process PowerShell -Verb runAs
